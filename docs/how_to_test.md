@@ -1,11 +1,15 @@
 # How to test
 
+The project folder on this PC is `D:\grad project\AES_128` (a clone of github.com/Y2Hozayen/AES_128). If you clone it somewhere else, use that folder wherever this guide says "project folder". A path without spaces (e.g. `D:\AES_128`) is safest for Vivado.
+
+Needs on each PC: Vivado 2026.1 in `C:\AMDDesignTools\2026.1` (or set `VIVADO_BIN` to its `Vivado\bin` folder) and the Python environment from section F.
+
 ## A. One command (recommended)
 
 1. Press **Windows key**, type `cmd`, press **Enter**. A Command Prompt opens.
 2. Type this and press **Enter**:
    ```
-   cd /d C:\AES_128
+   cd /d "D:\grad project\AES_128"
    ```
 3. Run the S-box test (about 15 s):
    ```
@@ -78,7 +82,7 @@ Keep the project out of OneDrive (and other synced folders such as Dropbox): Viv
 ## C. Same simulation in the Vivado GUI (once, to see waveforms)
 
 1. Start **Vivado 2026.1** from the Start menu.
-2. **File > Project > Open...**, choose `C:\AES_128\AES_Trial_1.xpr`, click **OK**.
+2. **File > Project > Open...**, choose `AES_Trial_1.xpr` in the project folder, click **OK**.
 
    The files are already added to this project, so skip to step 9. Steps 3–8 are only for a new project.
 3. In the **Flow Navigator** (left), under **PROJECT MANAGER**, click **Add Sources**.
@@ -101,7 +105,10 @@ Keep the project out of OneDrive (and other synced folders such as Dropbox): Viv
 4. Click **SIMULATION > Run Simulation > Run Behavioral Simulation** and wait for the waveform window.
 5. In the **Tcl Console**, type each line and press **Enter**:
    ```
-   source C:/AES_128/scripts/aes_demo.tcl
+   source {D:/grad project/AES_128/scripts/aes_demo.tcl}
+   ```
+   Use your project folder with forward slashes; keep the braces `{ }` when the path has spaces.
+   ```
    aes_selftest
    aes_encrypt "hello world"
    ```
@@ -128,23 +135,23 @@ To go back to the self-checking test: right-click **tb_aes128_core > Set as Top*
 Typical errors are `'compile' step failed`, `Spawn failed: ...` or `Failed to open file to read (elaborate.log)`. They come and go on this PC: the same run passes on the next try. The most likely cause is Windows Defender scanning the files Vivado has just generated (`compile.bat`, `xsimk.exe`) at the moment Vivado runs them.
 
 1. Retry first: **File > Close Simulation**, wait about 10 s, then **Run Behavioral Simulation** again.
-2. Still failing? Close Vivado, delete the folder `C:\AES_128\AES_Trial_1.sim` (Vivado rebuilds it), start Vivado and try again.
+2. Still failing? Close Vivado, delete the folder `AES_Trial_1.sim` in the project folder (Vivado rebuilds it), start Vivado and try again.
 3. To stop it for good, add Defender exclusions (needs an administrator account):
    1. Press **Windows key**, type `Windows Security`, press **Enter**.
    2. Click **Virus & threat protection**.
    3. Under **Virus & threat protection settings**, click **Manage settings**.
    4. Scroll to **Exclusions** and click **Add or remove exclusions**. Click **Yes** in the prompt.
-   5. Click **Add an exclusion > Folder**, choose `C:\AES_128`, click **Select Folder**.
-   6. Repeat step 5 for `C:\Users\User\AppData\Local\rover_fpga_build`. Create the folder first if it doesn't exist.
+   5. Click **Add an exclusion > Folder**, choose the project folder, click **Select Folder**.
+   6. Repeat step 5 for `%LOCALAPPDATA%\rover_fpga_build` (type that into the folder bar; it opens your own AppData folder). Create the folder first if it doesn't exist.
 4. `scripts\run.bat` (section A) has not failed this way, so use it whenever the GUI misbehaves.
 
-## F. Python golden model (one-time setup, already done on this PC)
+## F. Python golden model (one-time setup on each PC)
 
-The test vectors in `model\vectors` come from Python's `cryptography` library. The project uses its own Python environment in `C:\AES_128\.venv`, built from the Python that ships with Vivado. To rebuild it (for example on another PC):
+The test vectors in `model\vectors` come from Python's `cryptography` library. The project uses its own Python environment in `.venv` inside the project folder (not stored in git), built from the Python that ships with Vivado. To rebuild it (for example on another PC):
 
 1. Open a Command Prompt and type:
    ```
-   cd /d C:\AES_128
+   cd /d "D:\grad project\AES_128"
    C:\AMDDesignTools\2026.1\tps\win64\python-3.13.0\python.exe -m venv .venv
    .venv\Scripts\python -m pip install cryptography
    ```

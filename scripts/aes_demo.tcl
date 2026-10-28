@@ -3,7 +3,7 @@
 #                AES-128 ciphertext back from the simulated hardware.
 #
 # Use while demo_aes128 is the running simulation (see docs/how_to_test.md):
-#   source C:/AES_128/scripts/aes_demo.tcl
+#   source {<project folder>/scripts/aes_demo.tcl}   ;# braces if the path has spaces
 #   aes_encrypt "hello world"
 #   aes_key "my secret key 16"     ;# 16 characters, or 32 hex digits
 #   aes_selftest                   ;# FIPS-197 check

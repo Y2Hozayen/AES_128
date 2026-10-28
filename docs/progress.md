@@ -125,3 +125,20 @@ One command reruns everything: `scripts\run_all.bat` (vectors → 14 testbenches
 
 ### Next: Phase 1 (needs hardware)
 Camera → VGA on the Basys 3. Buy first: Basys 3, Cmod A7-35T, OV7670 without FIFO, 2× ESP32-S3-WROOM-1U (project brief §4).
+
+## 2026-10-28: design decisions, hardware explorer, new PC
+
+Decisions (written into the project brief)
+- Bitstream security: **Option B** (documented limitation) on all main boards. Optional Option A demo on a spare Cmod in Phase 6, only with supervisor approval (§5.5).
+- Traffic analysis is now in the threat model (§2, §5.9):
+  - the packet type and the motion flag move into a 6-byte encrypted inner header; the readable header byte (`kind`) only says DATA / HELLO / HELLO_REQ
+  - every rover DATA packet is 680 bytes (a multiple of 4), sent at a constant rate (`FPS_TX` × 120 per second, start at 8 fps); encrypted padding packets fill empty slots
+  - no snapshot-on-motion mode; WPA3 instead of WPA2; new security test 13 (traffic shape)
+  - No RTL change needed now: HELLO / HELLO_REQ keep their header values, so `hello_fsm` and `aes_gcm` are unchanged. The constant-rate packetizer is Phase 3 work.
+
+Docs
+- `docs/hardware-explorer.html`: interactive page (open in a browser). System map, threat table, packet layout, and one tab per Phase 0 block with schematics linked to the Verilog and working demos. Its AES / GCM code checks itself against FIPS-197 and GCM test cases 1–4 on load.
+- Comments and docs now say "project brief §x" for references to the brief.
+
+Working copy
+- The repo is now at `D:\grad project\AES_128` on a second PC. This PC has **no Vivado and no `.venv` yet**: install Vivado 2026.1 (or set `VIVADO_BIN`) and follow `docs/how_to_test.md` section F before running `scripts\run_all.bat`. Then rerun it once to confirm Phase 0 still passes from the new folder (the path contains a space; if Vivado has trouble, clone to a path without spaces such as `D:\AES_128`).

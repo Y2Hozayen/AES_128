@@ -328,6 +328,8 @@ Verify all vectors against the official documents before relying on them.
 - Keep answers short. Explain only when asked.
 - After each phase, update `/docs/progress.md` with what passed, what failed, and utilization numbers.
 - After any significant code change (new module, changed ports or state machine, changed algorithm or parameters), update `/docs/code_guide.md`, the beginner's walkthrough of the code. Keep its style simple, update the affected sections and the "Last updated" date, and add a line to its change log.
+- `/docs/hardware-explorer.html` is a standalone interactive page (open it in a browser) that embeds a copy of the RTL and points at line numbers in it. When an RTL file changes, refresh that file's embedded copy (`<script type="text/plain" id="src-<module>">`, or `id="vsrc"` for `aes128_core`) and fix the line numbers in the page's block descriptions. Add a tab when a new block is built.
+- Commits and PRs: no AI co-author or attribution lines. In comments and docs, refer to this file as the "project brief" (e.g. "project brief §5.3"), never by its file name. No AI-tool names or links in the repo, and no externally hosted copies of project pages.
 
 ## 12. First task
 
