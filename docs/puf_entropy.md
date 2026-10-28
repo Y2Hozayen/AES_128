@@ -1,4 +1,4 @@
-# PUF entropy and sizing (CLAUDE.md §5.3)
+# PUF entropy and sizing (project brief §5.3)
 
 All numbers in this document come from `model/puf_entropy.py`. Rerun it after Phase 4 with the measured bias and error rate:
 
@@ -79,12 +79,12 @@ Best code per row (inner rep(1/3/5) + outer BCH from the standard n = 127/255 ta
 ## 5. Conclusions and decision needed
 
 1. **VN debiasing costs about 4.5× more ROs.** With VN, even the BCH designs need 2,400–6,800 ROs (7,000–19,600 LUTs). That is too large for this FPGA.
-2. **Without VN, with the bias accounted for in the entropy,** BCH designs need 500–1,500 ROs (1,500–4,400 LUTs). This matches the ~1,280 ROs budgeted in CLAUDE.md §7.
+2. **Without VN, with the bias accounted for in the entropy,** BCH designs need 500–1,500 ROs (1,500–4,400 LUTs). This matches the ~1,280 ROs budgeted in project brief §7.
 3. **Recommended path:**
    - Phase 4: measure b and pe on both boards (≥ 20 power cycles, hot and cold).
    - If b is within 0.45–0.55, deploy with `DEBIAS = 0` and the bias-aware entropy from §2. Keep VN (`DEBIAS = 1`) if the bias is larger.
    - Add the BCH outer decoder to `fuzzy_extractor`.
-   - This deviates from CLAUDE.md §5.3 ("add a debiasing step"): it replaces debiasing with exact bias accounting. **It needs the supervisor's agreement**; the thesis should show both tables.
+   - This deviates from project brief §5.3 ("add a debiasing step"): it replaces debiasing with exact bias accounting. **It needs the supervisor's agreement**; the thesis should show both tables.
 4. **More bits per RO, if needed:** dark-bit masking (enrollment marks pairs with a small count difference as unreliable and skips them) lowers pe sharply. Masking or configurable ROs (Maiti & Schaumont) also help.
 
 ## 6. What the current RTL does
@@ -99,5 +99,5 @@ Measured in simulation (behavioral RO model, σ = 1% process variation, 0.15% pe
 ## 7. Known limitations (thesis)
 
 - **Independence:** the analysis assumes disjoint RO pairs are independent. Spatial correlation (systematic gradients) reduces the entropy. Check it in Phase 4 with inter-chip HD and autocorrelation.
-- **Helper data is unauthenticated:** manipulation attacks are possible (Delvaux & Verbauwhede). This is out of scope (CLAUDE.md §2).
-- **The PUF depends on bitstream protection** (CLAUDE.md §5.5).
+- **Helper data is unauthenticated:** manipulation attacks are possible (Delvaux & Verbauwhede). This is out of scope (project brief §2).
+- **The PUF depends on bitstream protection** (project brief §5.5).

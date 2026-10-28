@@ -35,7 +35,7 @@
 //
 // NOTE    : in decrypt mode out_data is UNVERIFIED plaintext. The caller
 //           must hold it in a buffer and release it only if tag_match = 1
-//           after done (CLAUDE.md §5.1).
+//           after done (project brief §5.1).
 //
 // Latency : ~24 cycles setup (H and E_K(J0)), then 129 cycles per AAD block
 //           and ~143 cycles per text block, 129 cycles for the length block.

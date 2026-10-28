@@ -1,6 +1,6 @@
 # Secure Reconnaissance Rover — FPGA Graduation Project
 
-Project brief for Claude Code. Read this fully before writing any code.
+Project brief. Read this fully before writing any code.
 
 ---
 

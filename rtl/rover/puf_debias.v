@@ -3,7 +3,7 @@
 // puf_debias
 // ----------------------------------------------------------------------------
 // Purpose : index-based Von Neumann debiasing of PUF response bits
-//           (Maes et al., CHES 2015), before the code offset (CLAUDE.md §5.3,
+//           (Maes et al., CHES 2015), before the code offset (project brief §5.3,
 //           "repetition code pitfall").
 //           Raw bits are taken in pairs (r0, r1).
 //           Enrollment  : keep r0 if r0 != r1. The helper mask bit for the
@@ -22,7 +22,7 @@
 //           mask_out_*   (ENROLL = 1) helper mask bits out, one per pair
 //           deb_*        debiased bits out (valid/ready)
 //
-// ENROLL  : 1 only in the separate enrollment bitstream (CLAUDE.md §5.3).
+// ENROLL  : 1 only in the separate enrollment bitstream (project brief §5.3).
 //           Unused ports of the other mode are tied off inside.
 // Latency : a few cycles per pair; never the bottleneck behind ro_puf.
 // ============================================================================

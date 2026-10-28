@@ -70,7 +70,7 @@ end
 
 Why `<=`? All `<=` assignments in a clocked block happen together at the clock edge. That is how real flip-flops behave. So `a <= b; b <= a;` swaps them.
 
-Project rules (CLAUDE.md §6):
+Project rules (project brief §6):
 - Never mix `=` and `<=` in one block.
 - Every combinational block sets a default value first.
 - Every constant has a width (`8'd0`, not `0`).

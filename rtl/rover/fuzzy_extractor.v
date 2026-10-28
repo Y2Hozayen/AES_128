@@ -3,7 +3,7 @@
 // fuzzy_extractor
 // ----------------------------------------------------------------------------
 // Purpose : code-offset secure sketch with a repetition code of length R
-//           (CLAUDE.md §5.3, Phase 0 code; the final design adds BCH).
+//           (project brief §5.3, Phase 0 code; the final design adds BCH).
 //           Debiased bits are taken in blocks x = (x0 .. x(R-1)).
 //           Enrollment  : helper w_i = x_i xor x_0 for i = 1..R-1 (this is
 //                         x xor C(x0), the syndrome form of the code offset;

@@ -3,7 +3,7 @@
 // puf_hash
 // ----------------------------------------------------------------------------
 // Purpose : privacy amplification of the corrected PUF response into the
-//           128-bit key K (CLAUDE.md §5.3): Davies-Meyer with AES-128,
+//           128-bit key K (project brief §5.3): Davies-Meyer with AES-128,
 //               H_0 = 0,  H_i = AES_{m_i}(H_{i-1}) xor H_{i-1},  K = H_last
 //           where m_i are the input bits packed MSB-first into 128-bit
 //           blocks; the last block is zero-padded. The input length NBITS is

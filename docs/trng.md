@@ -23,7 +23,7 @@ APT cutoff = 1 + CRITBINOM(1024, 2⁻ᴴ, 1 − α), computed exactly in Python.
 
 - **Start-up:** no output until the first 1,024-sample APT window passes.
 - **On any failure:** output blocked and `fail` latched until reset. With no random bits, no nonce is produced, so no HELLO is sent (tested in `tb_hello_fsm`, test 8).
-- **What these tests do not catch:** RCT and APT catch stuck outputs, long runs and strong bias. They do **not** catch a balanced periodic pattern such as 0101…. Offline statistical tests on captured data cover that (CLAUDE.md §10.11, NIST SP 800-22 subset).
+- **What these tests do not catch:** RCT and APT catch stuck outputs, long runs and strong bias. They do **not** catch a balanced periodic pattern such as 0101…. Offline statistical tests on captured data cover that (project brief §10.11, NIST SP 800-22 subset).
 
 ## Conditioning (`rtl/common/session_kdf.v`, OP_NONCE)
 

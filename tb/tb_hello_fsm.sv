@@ -1,5 +1,5 @@
 // ============================================================================
-// tb_hello_fsm : rover + base session setup, end to end (CLAUDE.md §5.2, §10.8)
+// tb_hello_fsm : rover + base session setup, end to end (project brief §5.2, §10.8)
 //
 // Each side: hello_fsm + session_kdf + aes_gcm, with a FATAL gcm_iv_monitor
 // (the IV-reuse assertion; it must never fire, also across reboots).

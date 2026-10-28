@@ -1,5 +1,5 @@
 """
-gcm_model.py : Python golden model for the rover's crypto (CLAUDE.md §5).
+gcm_model.py : Python golden model for the rover's crypto (project brief §5).
 
 Uses the `cryptography` library as the reference AES / AES-GCM. The RTL
 testbenches compare against vectors produced from these functions, and the
@@ -69,7 +69,7 @@ def davies_meyer(blocks, h0: bytes = bytes(16)) -> bytes:
 
 
 # ---------------------------------------------------------------------------
-# Session setup (CLAUDE.md §5.2)
+# Session setup (project brief §5.2)
 # ---------------------------------------------------------------------------
 COND_KEY = b"rover-trng-cond0"          # fixed public conditioning key
 MAGIC = 0x5256                          # "RV"

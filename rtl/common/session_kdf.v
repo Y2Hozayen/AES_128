@@ -2,7 +2,7 @@
 // ============================================================================
 // session_kdf
 // ----------------------------------------------------------------------------
-// Purpose : crypto services for the session setup (CLAUDE.md §5.2), all on
+// Purpose : crypto services for the session setup (project brief §5.2), all on
 //           the shared aes_gcm engine (one AES core per board):
 //             OP_NONCE : conditioned random nonce. Takes COND_BLOCKS x 128
 //                        health-tested TRNG bits R_i and computes the AES

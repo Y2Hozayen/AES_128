@@ -1893,7 +1893,7 @@ endmodule
 //
 // NOTE    : in decrypt mode out_data is UNVERIFIED plaintext. The caller
 //           must hold it in a buffer and release it only if tag_match = 1
-//           after done (CLAUDE.md §5.1).
+//           after done (project brief §5.1).
 //
 // Latency : ~24 cycles setup (H and E_K(J0)), then 129 cycles per AAD block
 //           and ~143 cycles per text block, 129 cycles for the length block.
@@ -2143,7 +2143,7 @@ endmodule
 // ============================================================================
 // motion_detect
 // ----------------------------------------------------------------------------
-// Purpose : frame-difference motion detector (CLAUDE.md §5.4).
+// Purpose : frame-difference motion detector (project brief §5.4).
 //           A frame buffer (inferred simple-dual-port BRAM) holds the previous
 //           frame. For each incoming pixel: read previous, count it if
 //           |cur - prev| > PIX_THRESH, write current over previous.
@@ -2339,7 +2339,7 @@ endmodule
 // ============================================================================
 // ro_puf
 // ----------------------------------------------------------------------------
-// Purpose : ring-oscillator PUF (CLAUDE.md §5.3). N_RO identical ring
+// Purpose : ring-oscillator PUF (project brief §5.3). N_RO identical ring
 //           oscillators in disjoint pairs (2p, 2p+1): N_RO/2 response bits.
 //           Bit p = 1 when RO 2p counts more edges than RO 2p+1 in the same
 //           window. Each bit is the majority of VOTES measurements (temporal
@@ -2538,7 +2538,7 @@ endmodule
 //           This is the ONLY place in the design where a combinational loop
 //           is allowed (ALLOW_COMBINATORIAL_LOOPS). Every instance must be an
 //           identical macro with fixed placement and routing (LOC/BEL,
-//           RLOC, Pblock, DONT_TOUCH, locked routes; CLAUDE.md §5.3), applied
+//           RLOC, Pblock, DONT_TOUCH, locked routes; project brief §5.3), applied
 //           in the board XDC in Phase 4.
 //
 // Ports   : en      1 = oscillate, 0 = stop (output settles to 1)
@@ -2571,7 +2571,7 @@ endmodule
 // puf_debias
 // ----------------------------------------------------------------------------
 // Purpose : index-based Von Neumann debiasing of PUF response bits
-//           (Maes et al., CHES 2015), before the code offset (CLAUDE.md §5.3,
+//           (Maes et al., CHES 2015), before the code offset (project brief §5.3,
 //           "repetition code pitfall").
 //           Raw bits are taken in pairs (r0, r1).
 //           Enrollment  : keep r0 if r0 != r1. The helper mask bit for the
@@ -2590,7 +2590,7 @@ endmodule
 //           mask_out_*   (ENROLL = 1) helper mask bits out, one per pair
 //           deb_*        debiased bits out (valid/ready)
 //
-// ENROLL  : 1 only in the separate enrollment bitstream (CLAUDE.md §5.3).
+// ENROLL  : 1 only in the separate enrollment bitstream (project brief §5.3).
 //           Unused ports of the other mode are tied off inside.
 // Latency : a few cycles per pair; never the bottleneck behind ro_puf.
 // ============================================================================
@@ -2705,7 +2705,7 @@ endmodule
 // fuzzy_extractor
 // ----------------------------------------------------------------------------
 // Purpose : code-offset secure sketch with a repetition code of length R
-//           (CLAUDE.md §5.3, Phase 0 code; the final design adds BCH).
+//           (project brief §5.3, Phase 0 code; the final design adds BCH).
 //           Debiased bits are taken in blocks x = (x0 .. x(R-1)).
 //           Enrollment  : helper w_i = x_i xor x_0 for i = 1..R-1 (this is
 //                         x xor C(x0), the syndrome form of the code offset;
@@ -2886,7 +2886,7 @@ endmodule
 // puf_hash
 // ----------------------------------------------------------------------------
 // Purpose : privacy amplification of the corrected PUF response into the
-//           128-bit key K (CLAUDE.md §5.3): Davies-Meyer with AES-128,
+//           128-bit key K (project brief §5.3): Davies-Meyer with AES-128,
 //               H_0 = 0,  H_i = AES_{m_i}(H_{i-1}) xor H_{i-1},  K = H_last
 //           where m_i are the input bits packed MSB-first into 128-bit
 //           blocks; the last block is zero-padded. The input length NBITS is
@@ -2995,7 +2995,7 @@ endmodule
 // ============================================================================
 // puf_keygen
 // ----------------------------------------------------------------------------
-// Purpose : the rover's long-term key K from the RO-PUF (CLAUDE.md §5.3):
+// Purpose : the rover's long-term key K from the RO-PUF (project brief §5.3):
 //             ro_puf (TMV) -> puf_debias -> fuzzy_extractor -> puf_hash -> K
 //           K is regenerated at every power-up and never stored.
 //
@@ -3012,7 +3012,7 @@ endmodule
 //           mask_out_*, off_out_*  helper data out (valid/ready, ENROLL = 1)
 //           key          K, valid while key_valid = 1. In the deployed design
 //                        this port may only feed the session KDF / HELLO
-//                        logic, never a pin, ILA or UART (CLAUDE.md §5.3).
+//                        logic, never a pin, ILA or UART (project brief §5.3).
 //           key_valid    1 once K is ready, until reset
 //           err          1 = the PUF ran out of bits before NB*R debiased
 //                        bits were collected (enrollment: choose a larger
@@ -3120,7 +3120,7 @@ endmodule
 // ============================================================================
 // ro_trng
 // ----------------------------------------------------------------------------
-// Purpose : ring-oscillator jitter TRNG, raw source (CLAUDE.md §5.2), on both
+// Purpose : ring-oscillator jitter TRNG, raw source (project brief §5.2), on both
 //           boards. N_RO free-running ring oscillators are XORed and sampled
 //           by the system clock; one raw bit every DECIM cycles, so the
 //           jitter accumulates between samples.
@@ -3204,7 +3204,7 @@ endmodule
 // trng_health
 // ----------------------------------------------------------------------------
 // Purpose : online health tests for the RO TRNG (NIST SP 800-90B §4.4) on
-//           1-bit raw samples (CLAUDE.md §5.2):
+//           1-bit raw samples (project brief §5.2):
 //             Repetition Count Test : fail if RCT_C identical samples in a row
 //             Adaptive Proportion   : in each window of APT_W samples, fail
 //                                     if the first sample's value occurs
@@ -3302,7 +3302,7 @@ endmodule
 // ============================================================================
 // session_kdf
 // ----------------------------------------------------------------------------
-// Purpose : crypto services for the session setup (CLAUDE.md §5.2), all on
+// Purpose : crypto services for the session setup (project brief §5.2), all on
 //           the shared aes_gcm engine (one AES core per board):
 //             OP_NONCE : conditioned random nonce. Takes COND_BLOCKS x 128
 //                        health-tested TRNG bits R_i and computes the AES
@@ -3519,7 +3519,7 @@ endmodule
 // ============================================================================
 // hello_fsm
 // ----------------------------------------------------------------------------
-// Purpose : authenticated session setup (CLAUDE.md §5.2), rover or base.
+// Purpose : authenticated session setup (project brief §5.2), rover or base.
 //
 //   Rover (ROLE = 0)
 //     1. wait for K (PUF); draw N_rover; send HELLO = hdr || N_rover with a

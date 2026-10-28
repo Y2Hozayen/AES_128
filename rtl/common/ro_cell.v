@@ -7,7 +7,7 @@
 //           This is the ONLY place in the design where a combinational loop
 //           is allowed (ALLOW_COMBINATORIAL_LOOPS). Every instance must be an
 //           identical macro with fixed placement and routing (LOC/BEL,
-//           RLOC, Pblock, DONT_TOUCH, locked routes; CLAUDE.md §5.3), applied
+//           RLOC, Pblock, DONT_TOUCH, locked routes; project brief §5.3), applied
 //           in the board XDC in Phase 4.
 //
 // Ports   : en      1 = oscillate, 0 = stop (output settles to 1)

@@ -1,5 +1,5 @@
 // ============================================================================
-// gcm_iv_monitor : simulation-only checker for GCM IV reuse (CLAUDE.md §5.2).
+// gcm_iv_monitor : simulation-only checker for GCM IV reuse (project brief §5.2).
 //
 // Watches one aes_gcm instance. Every accepted ENCRYPT start records the
 // (key, iv) pair; seeing the same pair twice is an IV reuse, which breaks

@@ -1,15 +1,15 @@
 # Alternative parts and boards
 
-Options to consider before buying (CLAUDE.md §4: no boards bought yet). Prices and stock change, so check the vendor before ordering. Facts marked **(check)** are from memory and should be confirmed in the datasheet.
+Options to consider before buying (project brief §4: no boards bought yet). Prices and stock change, so check the vendor before ordering. Facts marked **(check)** are from memory and should be confirmed in the datasheet.
 
 ## 1. What any choice must meet
 
 | Need | Why | Source |
 |---|---|---|
-| Xilinx 7-series (Artix-7 preferred) | All scripts, constraints and RTL target it; free Vivado; bitstream encryption (§5.5) | CLAUDE.md §4 |
+| Xilinx 7-series (Artix-7 preferred) | All scripts, constraints and RTL target it; free Vivado; bitstream encryption (§5.5) | project brief §4 |
 | Rover: ≥ ~25 BRAM36 and ≥ ~10,000 LUTs, more if the PUF needs it | Measured Phase 0 numbers plus remaining blocks | `docs/utilization.md` |
-| Rover: small, battery powered, ≥ ~31 free I/O pins | Camera, ESP32 SPI, motors, servos | CLAUDE.md §4 |
-| Base: VGA output (or HDMI), buttons, ≥ ~12 BRAM36 | Video display and controls | CLAUDE.md §5.6 |
+| Rover: small, battery powered, ≥ ~31 free I/O pins | Camera, ESP32 SPI, motors, servos | project brief §4 |
+| Base: VGA output (or HDMI), buttons, ≥ ~12 BRAM36 | Video display and controls | project brief §5.6 |
 | All 3.3 V logic | OV7670 and ESP32-S3 are 3.3 V; no level shifters | — |
 
 ## 2. FPGA boards
@@ -41,7 +41,7 @@ Options to consider before buying (CLAUDE.md §4: no boards bought yet). Prices 
 | Option | Why not |
 |---|---|
 | Zynq boards (Zybo Z7, PYNQ-Z2) | They contain an ARM CPU. The threat model says no CPU sees plaintext. Usable only if the CPU is left unused, which wastes the board. |
-| Altera DE0-Nano | Too little block RAM for the frame buffer (CLAUDE.md §4) |
+| Altera DE0-Nano | Too little block RAM for the frame buffer (project brief §4) |
 | Altera DE10-Lite | Enough RAM, but a different vendor: new tools, constraints and scripts. Only if the lab lends it for free (§4). |
 | Gowin boards (Sipeed Tang series) | Cheap, but different tools and libraries; the Vivado scripts won't carry over |
 
@@ -62,11 +62,11 @@ Recommendation: keep the OV7670. Buy 2 in case one is damaged; they are cheap.
 
 | Part | Notes |
 |---|---|
-| **ESP32-S3-WROOM-1U** (current plan) | External antenna (u.FL) for range; SPI slave rated up to 60 MHz (CLAUDE.md §4). Needs a carrier board or careful soldering. |
+| **ESP32-S3-WROOM-1U** (current plan) | External antenna (u.FL) for range; SPI slave rated up to 60 MHz (project brief §4). Needs a carrier board or careful soldering. |
 | ESP32-S3-DevKitC-1 (WROOM-1 version) | Development board with USB and pin headers; easiest to start with. PCB antenna gives shorter range. Good for Phase 3 bench tests. |
 | ESP32-S3-DevKitC-1 with WROOM-1U | Dev-board convenience plus the external antenna; good final choice if available. |
 | ESP32-C5 / ESP32-C6 | Newer chips (C5: dual-band 2.4/5 GHz, C6: Wi-Fi 6). Single core; SPI-slave speed and ESP-IDF support must be checked before choosing **(check)**. |
-| Classic ESP32 | Avoid: SPI slave limited to 10 MHz (CLAUDE.md §4). |
+| Classic ESP32 | Avoid: SPI slave limited to 10 MHz (project brief §4). |
 | nRF24L01+ / LoRa modules | Too slow for video. A LoRa link could be a separate long-range command/failsafe channel, but that is outside the current scope. |
 
 Antenna: a 2.4 GHz dipole with u.FL-to-SMA pigtail for each WROOM-1U.
@@ -91,7 +91,7 @@ Antenna: a 2.4 GHz dipole with u.FL-to-SMA pigtail for each WROOM-1U.
 |---|---|---|
 | 2S Li-ion (2× 18650) + buck converter to 5 V (e.g. LM2596 or MP1584 module) | Logic: FPGA board + ESP32 | Check the board's allowed input voltage in its reference manual **(check)** |
 | USB power bank | Logic, simplest option | Some power banks switch off at low current; pick one without auto-off |
-| Separate 2S Li-ion or 6× AA pack | Motors | Separate from logic, common ground (CLAUDE.md §4) |
+| Separate 2S Li-ion or 6× AA pack | Motors | Separate from logic, common ground (project brief §4) |
 | 18650 holder with protection board, or protected cells | Safety | Over-discharge and short protection |
 | Bulk capacitor (e.g. 470 µF) near the motor driver | Noise | Reduces resets when motors start |
 

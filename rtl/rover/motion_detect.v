@@ -2,7 +2,7 @@
 // ============================================================================
 // motion_detect
 // ----------------------------------------------------------------------------
-// Purpose : frame-difference motion detector (CLAUDE.md §5.4).
+// Purpose : frame-difference motion detector (project brief §5.4).
 //           A frame buffer (inferred simple-dual-port BRAM) holds the previous
 //           frame. For each incoming pixel: read previous, count it if
 //           |cur - prev| > PIX_THRESH, write current over previous.

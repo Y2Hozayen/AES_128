@@ -2,7 +2,7 @@
 // ============================================================================
 // puf_keygen
 // ----------------------------------------------------------------------------
-// Purpose : the rover's long-term key K from the RO-PUF (CLAUDE.md §5.3):
+// Purpose : the rover's long-term key K from the RO-PUF (project brief §5.3):
 //             ro_puf (TMV) -> puf_debias -> fuzzy_extractor -> puf_hash -> K
 //           K is regenerated at every power-up and never stored.
 //
@@ -19,7 +19,7 @@
 //           mask_out_*, off_out_*  helper data out (valid/ready, ENROLL = 1)
 //           key          K, valid while key_valid = 1. In the deployed design
 //                        this port may only feed the session KDF / HELLO
-//                        logic, never a pin, ILA or UART (CLAUDE.md §5.3).
+//                        logic, never a pin, ILA or UART (project brief §5.3).
 //           key_valid    1 once K is ready, until reset
 //           err          1 = the PUF ran out of bits before NB*R debiased
 //                        bits were collected (enrollment: choose a larger

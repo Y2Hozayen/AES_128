@@ -3,7 +3,7 @@
 // trng_health
 // ----------------------------------------------------------------------------
 // Purpose : online health tests for the RO TRNG (NIST SP 800-90B §4.4) on
-//           1-bit raw samples (CLAUDE.md §5.2):
+//           1-bit raw samples (project brief §5.2):
 //             Repetition Count Test : fail if RCT_C identical samples in a row
 //             Adaptive Proportion   : in each window of APT_W samples, fail
 //                                     if the first sample's value occurs

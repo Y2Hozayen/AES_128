@@ -29,7 +29,7 @@ Issues found
 
 Not yet checked
 - Python is not installed (needed for the GCM golden model and Wycheproof vectors). Solved later the same day: see below.
-- Verilator is not installed (lint rule in CLAUDE.md §6).
+- Verilator is not installed (lint rule in project brief §6).
 
 ## 2026-10-27: project moved to C:\AES_128
 
@@ -124,4 +124,4 @@ One command reruns everything: `scripts\run_all.bat` (vectors → 14 testbenches
 - Verilator lint.
 
 ### Next: Phase 1 (needs hardware)
-Camera → VGA on the Basys 3. Buy first: Basys 3, Cmod A7-35T, OV7670 without FIFO, 2× ESP32-S3-WROOM-1U (CLAUDE.md §4).
+Camera → VGA on the Basys 3. Buy first: Basys 3, Cmod A7-35T, OV7670 without FIFO, 2× ESP32-S3-WROOM-1U (project brief §4).

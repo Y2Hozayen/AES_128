@@ -2,7 +2,7 @@
 // ============================================================================
 // ro_puf
 // ----------------------------------------------------------------------------
-// Purpose : ring-oscillator PUF (CLAUDE.md §5.3). N_RO identical ring
+// Purpose : ring-oscillator PUF (project brief §5.3). N_RO identical ring
 //           oscillators in disjoint pairs (2p, 2p+1): N_RO/2 response bits.
 //           Bit p = 1 when RO 2p counts more edges than RO 2p+1 in the same
 //           window. Each bit is the majority of VOTES measurements (temporal

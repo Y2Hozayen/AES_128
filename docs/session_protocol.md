@@ -1,6 +1,6 @@
 # Session setup protocol (as implemented)
 
-This implements CLAUDE.md §5.2. Modules: `rtl/common/hello_fsm.v` (protocol), `rtl/common/session_kdf.v` (crypto), `rtl/common/aes_gcm.v` (engine, shared). The Python reference is `model/gcm_model.py` (`hello_rover`, `hello_base`, `session_key`, `condition`).
+This implements project brief §5.2. Modules: `rtl/common/hello_fsm.v` (protocol), `rtl/common/session_kdf.v` (crypto), `rtl/common/aes_gcm.v` (engine, shared). The Python reference is `model/gcm_model.py` (`hello_rover`, `hello_base`, `session_key`, `condition`).
 
 ## Messages
 

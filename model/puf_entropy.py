@@ -1,6 +1,6 @@
 r"""
 puf_entropy.py : entropy and failure-rate calculation for the PUF key
-generator (CLAUDE.md §5.3). Prints the tables used in docs/puf_entropy.md.
+generator (project brief §5.3). Prints the tables used in docs/puf_entropy.md.
 
 Model
   - raw bit = one disjoint RO pair, after temporal majority voting
@@ -129,7 +129,7 @@ def main():
             for debias in (True, False):
                 print(row(b, pe, debias, best_rep(b, pe, debias)))
     print()
-    print("Concatenated repetition + BCH (final design, CLAUDE.md §5.3):")
+    print("Concatenated repetition + BCH (final design, project brief §5.3):")
     print(hdr)
     for b in (0.50, 0.55):
         for pe in (0.01, 0.03, 0.05):

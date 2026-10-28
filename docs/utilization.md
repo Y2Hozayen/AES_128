@@ -4,7 +4,7 @@
 - **Method:** each core is synthesized, placed and routed out-of-context with a 100 MHz clock (`scripts\synth.tcl`; all at once with `scripts\run_all.bat`).
 - **Tool and date:** Vivado 2026.1, 2026-10-27.
 
-| Module | LUTs | FFs | BRAM36 | DSP | WNS @100 MHz | Est. Fmax | Budget (CLAUDE.md §7) |
+| Module | LUTs | FFs | BRAM36 | DSP | WNS @100 MHz | Est. Fmax | Budget (project brief §7) |
 |---|---|---|---|---|---|---|---|
 | aes128_core (incl. 20× aes_sbox) | 1,284 (6.2%) | 286 | 0 | 0 | +3.385 ns | ~151 MHz | 1,500–2,500 LUTs ✔ |
 | ghash (bit-serial) | 269 | 521 | 0 | 0 | +4.057 ns | ~168 MHz | 400–600 LUTs ✔ |
@@ -40,4 +40,4 @@
 | motion_detect | 192 | 19 |
 | **Subtotal** | **~8,150 (39%)** | **19** |
 
-Still to come: camera, SPI, packetizer, TX buffer (SRAM controller), PWM. CLAUDE.md estimates them at about 1,000–1,600 LUTs and 3 BRAM36.
+Still to come: camera, SPI, packetizer, TX buffer (SRAM controller), PWM. The project brief (§7) estimates them at about 1,000–1,600 LUTs and 3 BRAM36.

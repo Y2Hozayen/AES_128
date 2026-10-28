@@ -2,7 +2,7 @@
 // ============================================================================
 // ro_trng
 // ----------------------------------------------------------------------------
-// Purpose : ring-oscillator jitter TRNG, raw source (CLAUDE.md §5.2), on both
+// Purpose : ring-oscillator jitter TRNG, raw source (project brief §5.2), on both
 //           boards. N_RO free-running ring oscillators are XORed and sampled
 //           by the system clock; one raw bit every DECIM cycles, so the
 //           jitter accumulates between samples.

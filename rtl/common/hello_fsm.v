@@ -2,7 +2,7 @@
 // ============================================================================
 // hello_fsm
 // ----------------------------------------------------------------------------
-// Purpose : authenticated session setup (CLAUDE.md §5.2), rover or base.
+// Purpose : authenticated session setup (project brief §5.2), rover or base.
 //
 //   Rover (ROLE = 0)
 //     1. wait for K (PUF); draw N_rover; send HELLO = hdr || N_rover with a
